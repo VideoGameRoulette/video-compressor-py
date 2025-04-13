@@ -35,31 +35,32 @@ if "%choice%"=="1" (
 
 set VERSION=%MAJOR%.%MINOR%.%PATCH%
 echo %VERSION% > %VERSION_FILE%
+set NAME=video_compressor_ffmpeg_v%VERSION%
 
 echo.
 echo 🔄 Cleaning previous builds...
 rmdir /s /q build
 rmdir /s /q dist
-del main.spec
+if exist %NAME%.spec del %NAME%.spec
 
 echo.
-echo 🛠 Injecting version into main.py...
-powershell -Command "(Get-Content main.py) -replace '__version__ = \".*?\"', '__version__ = \"%VERSION%\"' | Set-Content main.py"
+echo 🛠 Injecting version into ffmpeg.py...
+powershell -Command "(Get-Content ffmpeg.py) -replace '__version__ = \".*?\"', '__version__ = \"%VERSION%\"' | Set-Content ffmpeg.py"
 
 echo.
 echo ✅ Activating virtual environment...
 call venv\\Scripts\\activate
 
 echo.
-echo 🛠️ Building video_compressor_gui_v%VERSION% from main.py...
+echo 🛠️ Building video_compressor_ffmpeg_v%VERSION% from ffmpeg.py...
 pyinstaller ^
---name "video_compressor_gui_v%VERSION%" ^
+--name "video_compressor_ffmpeg_v%VERSION%" ^
 --onefile ^
 --windowed ^
 --add-data "ffmpeg.exe;." ^
 --add-data "ffprobe.exe;." ^
-main.py
+ffmpeg.py
 
 echo.
-echo 🎉 Done! Check the dist\\video_compressor_gui_v%VERSION%.exe file.
+echo 🎉 Done! Check the dist\\video_compressor_ffmpeg_v%VERSION%.exe file.
 pause
