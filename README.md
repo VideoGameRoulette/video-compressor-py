@@ -4,8 +4,6 @@
 A lightweight, user-friendly batch video compressor built with Python, PyQt5, and FFmpeg.  
 Easily compress multiple videos with selectable quality and resolution — no terminal knowledge required.
 
-![screenshot](preview.png)
-
 ---
 
 ## ✨ Features
@@ -40,7 +38,7 @@ Easily compress multiple videos with selectable quality and resolution — no te
 ### 💻 Run from source:
 
 ```bash
-python video_compressor_gui_ffprobe_footer.py
+python video_compressor_gui_ffprobe.py
 ```
 
 ### 🛠 Build the executable:
@@ -57,7 +55,7 @@ Output will appear in the `dist/` folder as `video_compressor_gui.exe`.
 
 ## 📸 Screenshot
 
-> *(Add a real screenshot here)*
+![screenshot](preview.png)
 
 ---
 
@@ -65,7 +63,7 @@ Output will appear in the `dist/` folder as `video_compressor_gui.exe`.
 
 ```
 video-compressor/
-├── video_compressor_gui_ffprobe_footer.py
+├── video_compressor_gui_ffprobe.py
 ├── ffmpeg.exe
 ├── ffprobe.exe
 ├── build.bat
